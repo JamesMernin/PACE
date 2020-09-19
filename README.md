@@ -37,7 +37,7 @@ Below is an example of an API call for information on my favorite Pokemon, Chari
 
 ---
 
-##Wireframe:
+## Wireframe:
 # ![alt text](https://github.com/JamesMernin/PACE/blob/master/Images/Wireframe.png "Wireframe")
 
 ---
@@ -62,7 +62,7 @@ A way to include additional options that would effect the damage multiplier. Som
 
 ---
 
-##Goals:
+## Goals:
   * On Monday, I want to have the attacking and defending Pokemon to be selectable and to display their types upon being chosen.
   * On Tuesday, I would like to be able to implement the logic to choose an attack type and calculate the effectiveness of a move.
   * Wednesday can be spent tidying up the graphics and UI.
