@@ -34,7 +34,14 @@ Below is an example of an API call for information on my favorite Pokemon, Chari
         }
     ],
 ```
-
+Each Pokemon has its own moveset, but for this app, all that matters is getting the move's type. One move Charizard learns is Mega Punch. The move's type is listed here. It may be possible to expand the app to calculate exact damage using move information, but at the minimum getting the attack type is all that's needed.
+[https://pokeapi.co/api/v2/move/5/](https://pokeapi.co/api/v2/move/5/)
+```json
+"type": {
+        "name": "normal",
+        "url": "https://pokeapi.co/api/v2/type/1/"
+    }
+```
 ---
 
 ## Wireframe:
