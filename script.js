@@ -124,6 +124,7 @@ async function getPokemonData(input, inputName, select, pokemon) {
     pokemon = pokemon.toLowerCase();
     let response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
 
+    // Get image, or display "No image" if image does not exist
     if (inputName === 'defender') {
       source = response.data.sprites.front_default;
       console.log(source);
@@ -136,10 +137,17 @@ async function getPokemonData(input, inputName, select, pokemon) {
       select.append(image);
     } else {
       let image = document.createElement('p');
-      image.textContent = capitalize(pokemon);
+      image.textContent = '[No image]';
       select.append(image);
     }
 
+    // Display the name
+    let name = document.createElement('p');
+    let pokemonName = capitalize(pokemon);
+    name.textContent = pokemonName;
+    select.append(name);
+
+    // Get the first type
     let type1 = document.createElement('div');
     type1.classList.add('type');
     let pokemonType1 = response.data.types[0].type.name;
@@ -147,6 +155,7 @@ async function getPokemonData(input, inputName, select, pokemon) {
     type1.append(pokemonType1);
     select.append(type1);
 
+    // Get the second type if it exists
     if (response.data.types.length > 1) {
       let type2 = document.createElement('div');
       type2.classList.add('type');
