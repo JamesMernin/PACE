@@ -5,7 +5,7 @@ function capitalize(name) {
 
 // Source for autocomplete: https://www.w3schools.com/howto/howto_js_autocomplete.asp
 async function autocomplete(inp) {
-  const pokemonCount = '1050';
+  const pokemonCount = 1050;
   let arr = [];
   try {
     let pokemonData = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${pokemonCount}`);
@@ -22,7 +22,7 @@ async function autocomplete(inp) {
       closeAllLists();
       if (!val) { return false; }
       currentFocus = -1;
-      /*create a DIV element that will contain the items (values):*/
+      /*create a div element that will contain the items (values):*/
       a = document.createElement("div");
       a.setAttribute("id", this.id + "autocomplete-list");
       a.setAttribute("class", "autocomplete-items");
@@ -39,7 +39,7 @@ async function autocomplete(inp) {
           b.innerHTML += arr[i].substr(val.length);
           /*insert a input field that will hold the current array item's value:*/
           b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-          /*execute a function when someone clicks on the item value (DIV element):*/
+          /*execute a function when someone clicks on the item value (div element):*/
           b.addEventListener("click", function (e) {
             /*insert the value for the autocomplete text field:*/
             inp.value = this.getElementsByTagName("input")[0].value;
@@ -115,12 +115,12 @@ async function autocomplete(inp) {
 
 function getName(input, inputName, select) {
   select.innerHTML = '';
-  console.log(`Value: ${input.value}`);
   getPokemonData(input, inputName, select, input.value);
 }
 
 async function getPokemonData(input, inputName, select, pokemon) {
   try {
+    document.querySelector('#errorText').textContent = '';
     pokemon = pokemon.toLowerCase();
     let response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
 
@@ -165,7 +165,8 @@ async function getPokemonData(input, inputName, select, pokemon) {
       select.append(type2);
     }
   } catch (error) {
-    console.log(`Error: ${error}`);
+    errorText = document.querySelector('#errorText');
+    errorText.textContent = 'Please pick a valid Pokemon from the drop-down';
   } finally {
     console.log('Pokemon generated');
   }

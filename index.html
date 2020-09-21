@@ -21,26 +21,27 @@
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-  <div id="defenderSelect">
-    <form autocomplete="off" action="javascript:;"
+  <div id="defenderSelect" class="selector">
+    <form autocomplete="on" action="javascript:;"
       onsubmit="getName(document.querySelector('#defenderInput'), 'defender', document.querySelector('#defender'))">
       <div class="autocomplete">
-        <input id="defenderInput" type="text" name="defendingPokemon" placeholder="search">
+        <input id="defenderInput" type="text" name="defendingPokemon" placeholder="search" required>
       </div>
       <input type="submit" id="defenderSubmit" value="Select Defender">
     </form>
   </div>
   <div id="defender" class="pokemon"></div>
   <div id="attacker" class="pokemon"></div>
-  <div id="attackerSelect">
-    <form autocomplete="off" action="javascript:;"
+  <div id="attackerSelect" class="selector">
+    <form autocomplete="on" action="javascript:;"
       onsubmit="getName(document.querySelector('#attackerInput'), 'attacker', document.querySelector('#attacker'))">
-      <div class="autocomplete">
-        <input id="attackerInput" type="text" name="attackingPokemon" placeholder="search">
+      <div class="autocomplete" required>
+        <input id="attackerInput" type="text" name="attackingPokemon" placeholder="search" required>
       </div>
       <input type="submit" id="attackerSubmit" value="Select Attacker">
     </form>
   </div>
+  <p id="errorText"></p>
 </body>
 
 </html>
