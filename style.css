@@ -1,22 +1,29 @@
 * {
   box-sizing: border-box;
+  font-family: "pokemon-font", monospace;
 }
 
 body {
   font: 16px;
 }
 
+type {
+
+}
+
 /* #defenderSelect {
 
 }
 
-#defender {
 
+#defender {
+  
 }
 
 #attacker {
 
 }
+
 
 #attackerSelect {
   

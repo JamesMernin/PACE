@@ -113,23 +113,48 @@ async function autocomplete(inp) {
   }
 }
 
-function getName(input, select) {
-  console.log(`Select: ${select} -- Value: ${input.value}`);
-  getPokemonData(input, select, input.value);
+function getName(input, inputName, select) {
+  select.innerHTML = '';
+  console.log(`Value: ${input.value}`);
+  getPokemonData(input, inputName, select, input.value);
 }
 
-async function getPokemonData(input, select, pokemon) {
+async function getPokemonData(input, inputName, select, pokemon) {
   try {
     pokemon = pokemon.toLowerCase();
-    let response = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}`);
-    let pokemonId = response.data.id;
-    let image = document.createElement('img');
-    if (select = document.querySelector('#defender')) {
-      image.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
+    let response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+
+    if (inputName === 'defender') {
+      source = response.data.sprites.front_default;
+      console.log(source);
     } else {
-      image.src = `"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${pokemonId}.png`
+      source = response.data.sprites.back_default;
     }
-    select.append(image);
+    if (source != null) {
+      let image = document.createElement('img');
+      image.src = source;
+      select.append(image);
+    } else {
+      let image = document.createElement('p');
+      image.textContent = capitalize(pokemon);
+      select.append(image);
+    }
+
+    let type1 = document.createElement('div');
+    type1.classList.add('type');
+    let pokemonType1 = response.data.types[0].type.name;
+    type1.id = pokemonType1;
+    type1.append(pokemonType1);
+    select.append(type1);
+
+    if (response.data.types.length > 1) {
+      let type2 = document.createElement('div');
+      type2.classList.add('type');
+      let pokemonType2 = response.data.types[1].type.name;
+      type2.id = pokemonType2;
+      type2.append(pokemonType2);
+      select.append(type2);
+    }
   } catch (error) {
     console.log(`Error: ${error}`);
   } finally {
