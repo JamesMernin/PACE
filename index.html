@@ -22,19 +22,21 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
   <div id="defenderSelect">
-    <form>
-      <input type="search" placeholder="search" />
-      <datalist class="pokemonList"></datalist>
-      <button type="submit">Select Defender</button>
+    <form autocomplete="off">
+      <div class="autocomplete">
+        <input id="defendInput" type="text" name="defendingPokemon" placeholder="search">
+      </div>
+      <input type="submit" value="Select Defender">
     </form>
   </div>
   <div id="defender"></div>
   <div id="attacker"></div>
   <div id="attackerSelect">
-    <form>
-      <input type="search" placeholder="search" />
-      <datalist class="pokemonList"></datalist>
-      <button type="submit">Select Attacker</button>
+    <form autocomplete="off">
+      <div class="autocomplete">
+        <input id="attackInput" type="text" name="attackingPokemon" placeholder="search">
+      </div>
+      <input type="submit" value="Select Attacker">
     </form>
   </div>
 </body>
