@@ -5,7 +5,7 @@ function capitalize(name) {
 
 // Source for autocomplete: https://www.w3schools.com/howto/howto_js_autocomplete.asp
 async function autocomplete(inp) {
-  let pokemonCount = '1050';
+  const pokemonCount = '1050';
   let arr = [];
   try {
     let pokemonData = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${pokemonCount}`);
