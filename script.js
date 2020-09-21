@@ -113,5 +113,29 @@ async function autocomplete(inp) {
   }
 }
 
-autocomplete(document.querySelector("#defendInput"));
-autocomplete(document.querySelector("#attackInput"));
+function getName(input, select) {
+  console.log(`Select: ${select} -- Value: ${input.value}`);
+  getPokemonData(input, select, input.value);
+}
+
+async function getPokemonData(input, select, pokemon) {
+  try {
+    pokemon = pokemon.toLowerCase();
+    let response = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}`);
+    let pokemonId = response.data.id;
+    let image = document.createElement('img');
+    if (select = document.querySelector('#defender')) {
+      image.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
+    } else {
+      image.src = `"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${pokemonId}.png`
+    }
+    select.append(image);
+  } catch (error) {
+    console.log(`Error: ${error}`);
+  } finally {
+    console.log('Pokemon generated');
+  }
+}
+
+autocomplete(document.querySelector("#defenderInput"));
+autocomplete(document.querySelector("#attackerInput"));

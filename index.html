@@ -9,7 +9,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
+  <title>PACE</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://unpkg.com/axios/dist/axios.min"></script>
@@ -22,21 +22,21 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
   <div id="defenderSelect">
-    <form autocomplete="off">
+    <form autocomplete="off" action="javascript:;" onsubmit="getName('defender', document.querySelector('#defender'))">
       <div class="autocomplete">
-        <input id="defendInput" type="text" name="defendingPokemon" placeholder="search">
+        <input id="defenderInput" type="text" name="defendingPokemon" placeholder="search">
       </div>
-      <input type="submit" value="Select Defender">
+      <input type="submit" id="defenderSubmit" value="Select Defender">
     </form>
   </div>
   <div id="defender"></div>
   <div id="attacker"></div>
   <div id="attackerSelect">
-    <form autocomplete="off">
+    <form autocomplete="off" action="javascript:;" onsubmit="getName('attacker', document.querySelector('#attacker'))">
       <div class="autocomplete">
-        <input id="attackInput" type="text" name="attackingPokemon" placeholder="search">
+        <input id="attackerInput" type="text" name="attackingPokemon" placeholder="search">
       </div>
-      <input type="submit" value="Select Attacker">
+      <input type="submit" id="attackerSubmit" value="Select Attacker">
     </form>
   </div>
 </body>
