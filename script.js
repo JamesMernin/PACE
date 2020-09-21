@@ -1,4 +1,4 @@
-// Found function to capitalize first letter. Source: https://dzone.com/articles/capitalize-first-letter-string-javascript
+// Found function to capitalize first letter of Pokemon name. Source: https://dzone.com/articles/capitalize-first-letter-string-javascript
 function capitalize(name) {
   return name.charAt(0).toUpperCase() + name.slice(1);
 }
@@ -33,7 +33,7 @@ async function autocomplete(inp) {
         /*check if the item starts with the same letters as the text field value:*/
         if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
           /*create a DIV element for each matching element:*/
-          b = document.createElement("DIV");
+          b = document.createElement("div");
           /*make the matching letters bold:*/
           b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
           b.innerHTML += arr[i].substr(val.length);

@@ -145,6 +145,6 @@ input[type=submit] {
 }
 .autocomplete-active {
   /*when navigating through the items using the arrow keys:*/
-  background-color: #FF0000; !important;
+  background-color: #FF0000 !important;
   color: #ffffff;
 }
