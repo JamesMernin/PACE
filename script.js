@@ -158,13 +158,16 @@ async function getPokemonData(input, inputName, select, pokemon) {
     type1.append(pokemonType1);
     select.append(type1);
 
-    let pokemonType2 = '';
-
-    // Get the second type if it exists
+    // Get the second type if it exists or make it blank
+    let type2 = document.createElement('div');
+    type2.classList.add('type');
     if (response.data.types.length > 1) {
-      let type2 = document.createElement('div');
-      type2.classList.add('type');
       pokemonType2 = response.data.types[1].type.name;
+      type2.id = pokemonType2;
+      type2.append(pokemonType2);
+      select.append(type2);
+    } else {
+      pokemonType2 = '';
       type2.id = pokemonType2;
       type2.append(pokemonType2);
       select.append(type2);
@@ -229,14 +232,53 @@ function getSelection() {
     console.log(`Select: ${attackSelect.options.selectedIndex}`);
     attackTypes.classList.add('selected');
     if (document.querySelector('#defender').classList.contains('selected') && document.querySelector('#attacker').classList.contains('selected') && document.querySelector('#attackTypes').classList.contains('selected')) {
-      console.log('check');
-      getEffectiveness(document.querySelector('#attackSelect'));
+      getEffectiveness(attackSelect.options[attackSelect.selectedIndex].value, document.querySelectorAll('#defender .type')[0].textContent, document.querySelectorAll('#defender .type')[1].textContent);
     }
   }
 }
 
-function getEffectiveness(attackType, defendType1, defendType2) {
-  console.log('Hi!');
+async function getEffectiveness(attackType, defendType1, defendType2) {
+  try {
+    let multiplier = 1;
+    let attack = await axios.get(`https://pokeapi.co/api/v2/type/${attackType}/`);
+    let superEffectiveArr = attack.data.damage_relations.double_damage_to;
+    console.log(`SuperEffective: ${superEffectiveArr}`);
+    let notVeryEffectiveArr = attack.data.damage_relations.half_damage_to;
+    console.log(`NotVeryEffective: ${notVeryEffectiveArr}`);
+    let noEffectArr = attack.data.damage_relations.no_damage_to;
+    console.log(`NoEffect: ${noEffectArr}`);
+    for (let i = 0; i < superEffectiveArr.length; i++) {
+      if (defendType1 === superEffectiveArr[i].name || defendType2 === superEffectiveArr[i].name) {
+        multiplier *= 2;
+      }
+    }
+    for (i = 0; i < notVeryEffectiveArr.length; i++) {
+      if (defendType1 === notVeryEffectiveArr[i].name || defendType2 === notVeryEffectiveArr[i].name) {
+        multiplier *= 0.5;
+      }
+    }
+    for (i = 0; i < noEffectArr.length; i++) {
+      if (defendType1 === noEffectArr[i].name || defendType2 === noEffectArr[i].name) {
+        multiplier *= 0;
+      }
+    }
+    let effective = document.querySelector('#effective');
+    effective.classList.remove('hidden');
+    if (multiplier === 0) {
+      effective.textContent = "It has no effect.";
+    } else if (multiplier < 1) {
+      effective.textContent = "It's not very effective...";
+    } else if (multiplier === 1) {
+      effective.textContent = "It's regularly effective.";
+    } else {
+      effective.textContent = "It's super effective!";
+    }
+    effective.textContent += ` (${multiplier}x damage)`;
+  } catch (error) {
+    console.log(`Error: ${error}`);
+  } finally {
+    console.log('Effectiveness calculated');
+  }
 }
 
 autocomplete(document.querySelector("#defenderInput"));
