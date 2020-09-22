@@ -228,7 +228,15 @@ function getSelection() {
   } else {
     console.log(`Select: ${attackSelect.options.selectedIndex}`);
     attackTypes.classList.add('selected');
+    if (document.querySelector('#defender').classList.contains('selected') && document.querySelector('#attacker').classList.contains('selected') && document.querySelector('#attackTypes').classList.contains('selected')) {
+      console.log('check');
+      getEffectiveness(document.querySelector('#attackSelect'));
+    }
   }
+}
+
+function getEffectiveness(attackType, defendType1, defendType2) {
+  console.log('Hi!');
 }
 
 autocomplete(document.querySelector("#defenderInput"));
@@ -236,8 +244,3 @@ autocomplete(document.querySelector("#attackerInput"));
 
 let attackSelect = document.querySelector('#attackSelect');
 attackSelect.addEventListener('change', getSelection);
-
-if (document.querySelector('#defender').classList.contains('selected') && document.querySelector('#attacker').classList.contains('selected') && document.querySelector('#attackTypes').classList.contains('selected')) {
-  console.log('check');
-  getEffectiveness();
-}
