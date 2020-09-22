@@ -252,7 +252,6 @@ function getSelection() {
 async function getEffectiveness(attackType, defendType1, defendType2) {
   try {
     let multiplier = 1;
-    let stabMultiplier = 1;
     let attack = await axios.get(`https://pokeapi.co/api/v2/type/${attackType.value}/`);
     let superEffectiveArr = attack.data.damage_relations.double_damage_to;
     console.log(`SuperEffective: ${superEffectiveArr}`);
@@ -275,30 +274,41 @@ async function getEffectiveness(attackType, defendType1, defendType2) {
         multiplier *= 0;
       }
     }
-    if (attackType.classList.contains('stab')) {
-      stabMultiplier *= 1.5;
-    }
-    let effective = document.querySelector('#effective');
-    effective.classList.remove('hidden');
-    if (multiplier === 0) {
-      effective.textContent = "This move type has no effect.";
-    } else if (multiplier < 1) {
-      effective.textContent = "This move type is not very effective...";
-    } else if (multiplier === 1) {
-      effective.textContent = "This move type is regularly effective.";
-    } else {
-      effective.textContent = "This move type is super effective!";
-    }
-    effective.textContent += ` (${multiplier}x damage)`;
-    if (stabMultiplier === 1.5 && multiplier != 0) {
-      let stabText = document.querySelector('#stab')
-      stabText.classList.remove('hidden');
-      stabText.textContent = `With STAB, this move type does ${multiplier * stabMultiplier}x damage!`;
-    }
+    effectiveCalc(attackType, multiplier);
   } catch (error) {
     console.log(`Error: ${error}`);
   } finally {
     console.log('Effectiveness calculated');
+  }
+}
+
+function effectiveCalc(attackType, multiplier) {
+  let effective = document.querySelector('#effective');
+  let stabMultiplier = 1;
+  effective.classList.remove('hidden');
+  if (multiplier === 0) {
+    effective.textContent = "This move type has no effect.";
+  } else if (multiplier < 1) {
+    effective.textContent = "This move type is not very effective...";
+  } else if (multiplier === 1) {
+    effective.textContent = "This move type is regularly effective.";
+  } else {
+    effective.textContent = "This move type is super effective!";
+  }
+  effective.textContent += ` (${multiplier}x damage)`;
+  if (attackType.classList.contains('stab')) {
+    stabMultiplier = 1.5;
+    console.log(stabMultiplier);
+  } else {
+    stabMultiplier = 1;
+  }
+  let stabText = document.querySelector('#stab');
+  if (stabMultiplier === 1.5 && multiplier != 0) {
+    console.log(`Multiplier: ${multiplier}`);
+    stabText.classList.remove('hidden');
+    stabText.textContent = `With STAB, this move type does ${multiplier * stabMultiplier}x damage!`;
+  } else {
+    stabText.classList.add('hidden');
   }
 }
 
