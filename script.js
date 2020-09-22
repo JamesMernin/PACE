@@ -132,7 +132,7 @@ async function getPokemonData(input, inputName, select, pokemon) {
     } else {
       document.querySelector('#attackErrorText').textContent = '';
       document.querySelector('#attacker').classList.add('selected');
-      source = response.data.sprites.back_default;
+      source = response.data.sprites.front_default;
     }
     if (source != null) {
       let image = document.createElement('img');
@@ -168,7 +168,7 @@ async function getPokemonData(input, inputName, select, pokemon) {
       select.append(type2);
     } else {
       pokemonType2 = '';
-      type2.id = pokemonType2;
+      type2.id = 'blank';
       type2.append(pokemonType2);
       select.append(type2);
     }

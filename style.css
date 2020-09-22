@@ -58,8 +58,12 @@ vertical-align: middle;
 margin: 20px 0 0 0;
 }
 
+#blank {
+  display: none;
+}
+
 #normal {
-background-color: #A8A878
+  background-color: #A8A878
 }
 
 #fire {
