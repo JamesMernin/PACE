@@ -120,15 +120,16 @@ function getName(input, inputName, select) {
 
 async function getPokemonData(input, inputName, select, pokemon) {
   try {
-    document.querySelector('#errorText').textContent = '';
     pokemon = pokemon.toLowerCase();
     let response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
 
     // Get image, or display "No image" if image does not exist
     if (inputName === 'defender') {
+      document.querySelector('#defendErrorText').textContent = '';
       source = response.data.sprites.front_default;
       console.log(source);
     } else {
+      document.querySelector('#attackErrorText').textContent = '';
       source = response.data.sprites.back_default;
     }
     if (source != null) {
@@ -165,8 +166,13 @@ async function getPokemonData(input, inputName, select, pokemon) {
       select.append(type2);
     }
   } catch (error) {
-    errorText = document.querySelector('#errorText');
-    errorText.textContent = 'Please pick a valid Pokemon from the drop-down';
+    if (inputName === 'defender') {
+      errorText = document.querySelector('#defendErrorText');
+      errorText.textContent = 'Please pick a valid defending Pokemon from the drop-down';
+    } else {
+      errorText = document.querySelector('#attackErrorText');
+      errorText.textContent = 'Please pick a valid attacking Pokemon from the drop-down';
+    }
   } finally {
     console.log('Pokemon generated');
   }

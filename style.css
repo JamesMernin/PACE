@@ -106,20 +106,6 @@ background-color: #A8A878
   background-color: #EE99AC
 }
 
-/* #errorText {
-    animation: blinkingText 1.2s;
-    animation-iteration-count: 2;
-}
-
-@keyframes blinkingText{
-  0%{     color: #000;    }
-  49%{    color: #000; }
-  60%{    color: transparent; }
-  99%{    color:transparent;  }
-  100%{   color: #000;    }
-} */
-
-
 .autocomplete {
   /*the container must be positioned relative:*/
   position: relative;
