@@ -15,6 +15,10 @@ h3 {
   font-size: 14px;
 }
 
+h4 {
+  margin: 0;
+}
+
 img {
   width: 20%;
   height: auto;
@@ -56,6 +60,10 @@ vertical-align: middle;
 
 #clear {
 margin: 20px 0 0 0;
+}
+
+#space {
+  margin-bottom: 20px;
 }
 
 #blank {

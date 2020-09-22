@@ -147,7 +147,12 @@ async function getPokemonData(input, inputName, select, pokemon) {
     // Display the name
     let name = document.createElement('p');
     let pokemonName = capitalize(pokemon);
-    name.textContent = pokemonName;
+    if (inputName === 'defender') {
+      name.textContent = "Defender: ";
+    } else {
+      name.textContent = "Attacker: ";
+    }
+    name.textContent += pokemonName;
     select.append(name);
 
     // Get the first type
@@ -276,19 +281,19 @@ async function getEffectiveness(attackType, defendType1, defendType2) {
     let effective = document.querySelector('#effective');
     effective.classList.remove('hidden');
     if (multiplier === 0) {
-      effective.textContent = "It has no effect.";
+      effective.textContent = "This move type has no effect.";
     } else if (multiplier < 1) {
-      effective.textContent = "It's not very effective...";
+      effective.textContent = "This move type is not very effective...";
     } else if (multiplier === 1) {
-      effective.textContent = "It's regularly effective.";
+      effective.textContent = "This move type is regularly effective.";
     } else {
-      effective.textContent = "It's super effective!";
+      effective.textContent = "This move type is super effective!";
     }
     effective.textContent += ` (${multiplier}x damage)`;
-    if (stabMultiplier === 1.5) {
+    if (stabMultiplier === 1.5 && multiplier != 0) {
       let stabText = document.querySelector('#stab')
       stabText.classList.remove('hidden');
-      stabText.textContent = `With STAB, this move does ${multiplier * stabMultiplier}x damage!`;
+      stabText.textContent = `With STAB, this move type does ${multiplier * stabMultiplier}x damage!`;
     }
   } catch (error) {
     console.log(`Error: ${error}`);
@@ -304,6 +309,6 @@ let attackSelect = document.querySelector('#attackSelect');
 attackSelect.addEventListener('change', getSelection);
 
 let clear = document.querySelector('#clear');
-clear.addEventListener('click', (e) => {
+clear.addEventListener('click', () => {
   location.reload();
 })
