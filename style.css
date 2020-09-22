@@ -20,19 +20,20 @@ h4 {
 }
 
 img {
-  width: 20%;
+  width: 100%;
   height: auto;
   vertical-align: middle;
 }
 
 .pokemon {
+  display: inline-block;
+  margin-right: 150px;
   text-align: center;
-  /* display: flex;
-  flex-flow: space-between; */
 }
 
 .selector {
-  margin: 10px 0;
+  display: inline-block;
+  margin: 10px 70px 0 0;
 }
 
 .hidden {

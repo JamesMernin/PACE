@@ -25,32 +25,36 @@
   <h4>Created by: James Mernin</h4>
   <h4>&#169; 2020</h4>
   <div id="space"></div>
-  <div id="defenderSelect" class="selector">
-    <form autocomplete="on" action="javascript:;"
-      onsubmit="getName(document.querySelector('#defenderInput'), 'defender', document.querySelector('#defender'))">
-      <div class="autocomplete">
-        <input id="defenderInput" type="text" name="defendingPokemon" placeholder="search" required>
+  <div id="main">
+    <div id="selections">
+      <div id="defenderSelect" class="selector">
+        <form autocomplete="on" action="javascript:;"
+          onsubmit="getName(document.querySelector('#defenderInput'), 'defender', document.querySelector('#defender'))">
+          <div class="autocomplete">
+            <input id="defenderInput" type="text" name="defendingPokemon" placeholder="search" required>
+          </div>
+          <input type="submit" id="defenderSubmit" value="Select Defender">
+        </form>
       </div>
-      <input type="submit" id="defenderSubmit" value="Select Defender">
-    </form>
-  </div>
-  <div id="defender" class="pokemon"></div>
-  <p id="defendErrorText"></p>
-  <div id="attackerSelect" class="selector">
-    <form autocomplete="on" action="javascript:;"
-      onsubmit="getName(document.querySelector('#attackerInput'), 'attacker', document.querySelector('#attacker'))">
-      <div class="autocomplete" required>
-        <input id="attackerInput" type="text" name="attackingPokemon" placeholder="search" required>
+      <div id="attackerSelect" class="selector">
+        <form autocomplete="off" action="javascript:;"
+          onsubmit="getName(document.querySelector('#attackerInput'), 'attacker', document.querySelector('#attacker'))">
+          <div class="autocomplete" required>
+            <input id="attackerInput" type="text" name="attackingPokemon" placeholder="search" required>
+          </div>
+          <input type="submit" id="attackerSubmit" value="Select Attacker">
+        </form>
       </div>
-      <input type="submit" id="attackerSubmit" value="Select Attacker">
-    </form>
+    </div>
+    <div id="defender" class="pokemon"></div>
+    <div id="attacker" class="pokemon"></div>
+    <p id="defendErrorText"></p>
+    <p id="attackErrorText"></p>
   </div>
-  <div id="attacker" class="pokemon"></div>
-  <p id="attackErrorText"></p>
   <h2 class="attackHeader hidden">Select attack type</h2>
   <h3 class="attackHeader hidden">(bold types indicate STAB, which means the attack does 1.5x more
     damage!)</h3>
-  <form id="attackTypes" autocomplete="on" class="hidden">
+  <form id="attackTypes" autocomplete="off" class="hidden">
     <select id="attackSelect" name="attackSelect" required>
       <option value='select' class='select'>select</option>
     </select>
