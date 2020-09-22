@@ -232,7 +232,7 @@ function getSelection() {
     console.log(`Select: ${attackSelect.options.selectedIndex}`);
     attackTypes.classList.add('selected');
     if (document.querySelector('#defender').classList.contains('selected') && document.querySelector('#attacker').classList.contains('selected') && document.querySelector('#attackTypes').classList.contains('selected')) {
-      getEffectiveness(attackSelect.options[attackSelect.selectedIndex].value, document.querySelectorAll('#defender .type')[0].textContent, document.querySelectorAll('#defender .type')[1].textContent);
+      getEffectiveness(attackSelect.options[attackSelect.selectedIndex], document.querySelectorAll('#defender .type')[0].textContent, document.querySelectorAll('#defender .type')[1].textContent);
     }
   }
 }
@@ -240,7 +240,8 @@ function getSelection() {
 async function getEffectiveness(attackType, defendType1, defendType2) {
   try {
     let multiplier = 1;
-    let attack = await axios.get(`https://pokeapi.co/api/v2/type/${attackType}/`);
+    let stabMultiplier = 1;
+    let attack = await axios.get(`https://pokeapi.co/api/v2/type/${attackType.value}/`);
     let superEffectiveArr = attack.data.damage_relations.double_damage_to;
     console.log(`SuperEffective: ${superEffectiveArr}`);
     let notVeryEffectiveArr = attack.data.damage_relations.half_damage_to;
@@ -262,6 +263,9 @@ async function getEffectiveness(attackType, defendType1, defendType2) {
         multiplier *= 0;
       }
     }
+    if (attackType.classList.contains('stab')) {
+      stabMultiplier *= 1.5;
+    }
     let effective = document.querySelector('#effective');
     effective.classList.remove('hidden');
     if (multiplier === 0) {
@@ -274,6 +278,11 @@ async function getEffectiveness(attackType, defendType1, defendType2) {
       effective.textContent = "It's super effective!";
     }
     effective.textContent += ` (${multiplier}x damage)`;
+    if (stabMultiplier = 1.5) {
+      let stabText = document.querySelector('#stab')
+      stabText.classList.remove('hidden');
+      stabText.textContent = `With STAB, this move does ${multiplier * stabMultiplier}x damage!`;
+    }
   } catch (error) {
     console.log(`Error: ${error}`);
   } finally {
