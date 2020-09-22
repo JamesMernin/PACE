@@ -220,5 +220,24 @@ async function getAttack(type1, type2) {
   }
 }
 
+function getSelection() {
+  let attackSelect = document.querySelector('#attackSelect');
+  let attackTypes = document.querySelector('#attackTypes');
+  if (attackSelect.options.selectedIndex === 0) {
+    attackTypes.classList.remove('selected');
+  } else {
+    console.log(`Select: ${attackSelect.options.selectedIndex}`);
+    attackTypes.classList.add('selected');
+  }
+}
+
 autocomplete(document.querySelector("#defenderInput"));
 autocomplete(document.querySelector("#attackerInput"));
+
+let attackSelect = document.querySelector('#attackSelect');
+attackSelect.addEventListener('change', getSelection);
+
+if (document.querySelector('#defender').classList.contains('selected') && document.querySelector('#attacker').classList.contains('selected') && document.querySelector('#attackTypes').classList.contains('selected')) {
+  console.log('check');
+  getEffectiveness();
+}
