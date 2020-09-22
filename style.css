@@ -54,6 +54,10 @@ vertical-align: middle;
   font-style: italic;
 }
 
+#clear {
+margin: 20px 0 0 0;
+}
+
 #normal {
 background-color: #A8A878
 }

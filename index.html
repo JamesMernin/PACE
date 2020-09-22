@@ -32,7 +32,6 @@
   </div>
   <div id="defender" class="pokemon"></div>
   <p id="defendErrorText"></p>
-  <div id="attacker" class="pokemon"></div>
   <div id="attackerSelect" class="selector">
     <form autocomplete="on" action="javascript:;"
       onsubmit="getName(document.querySelector('#attackerInput'), 'attacker', document.querySelector('#attacker'))">
@@ -42,6 +41,7 @@
       <input type="submit" id="attackerSubmit" value="Select Attacker">
     </form>
   </div>
+  <div id="attacker" class="pokemon"></div>
   <p id="attackErrorText"></p>
   <h2 class="attackHeader hidden">Select attack type</h2>
   <h3 class="attackHeader hidden">(bold types indicate STAB, which means the attack does 1.5x more
@@ -53,7 +53,7 @@
   </form>
   <h2 id="effective" class="hidden"></h2>
   <h2 id="stab" class="hidden"></h2>
-  <button id="clear" class="hidden">Clear</button>
+  <button id="clear">Click here to start over</button>
 </body>
 
 </html>

@@ -173,6 +173,13 @@ async function getPokemonData(input, inputName, select, pokemon) {
       select.append(type2);
     }
 
+    // Hide the selector to avoid issues
+    if (inputName === "defender") {
+      document.querySelector('#defenderSelect').classList.add('hidden');
+    } else {
+      document.querySelector('#attackerSelect').classList.add('hidden');
+    }
+
     // Function to get attack menu
     if (inputName === 'attacker') {
       getAttack(pokemonType1, pokemonType2);
@@ -278,7 +285,7 @@ async function getEffectiveness(attackType, defendType1, defendType2) {
       effective.textContent = "It's super effective!";
     }
     effective.textContent += ` (${multiplier}x damage)`;
-    if (stabMultiplier = 1.5) {
+    if (stabMultiplier === 1.5) {
       let stabText = document.querySelector('#stab')
       stabText.classList.remove('hidden');
       stabText.textContent = `With STAB, this move does ${multiplier * stabMultiplier}x damage!`;
@@ -295,3 +302,8 @@ autocomplete(document.querySelector("#attackerInput"));
 
 let attackSelect = document.querySelector('#attackSelect');
 attackSelect.addEventListener('change', getSelection);
+
+let clear = document.querySelector('#clear');
+clear.addEventListener('click', (e) => {
+  location.reload();
+})
