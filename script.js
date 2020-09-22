@@ -122,14 +122,16 @@ async function getPokemonData(input, inputName, select, pokemon) {
   try {
     pokemon = pokemon.toLowerCase();
     let response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+    let source;
 
     // Get image, or display "No image" if image does not exist
     if (inputName === 'defender') {
       document.querySelector('#defendErrorText').textContent = '';
+      document.querySelector('#defender').classList.add('selected');
       source = response.data.sprites.front_default;
-      console.log(source);
     } else {
       document.querySelector('#attackErrorText').textContent = '';
+      document.querySelector('#attacker').classList.add('selected');
       source = response.data.sprites.back_default;
     }
     if (source != null) {
@@ -156,25 +158,65 @@ async function getPokemonData(input, inputName, select, pokemon) {
     type1.append(pokemonType1);
     select.append(type1);
 
+    let pokemonType2 = '';
+
     // Get the second type if it exists
     if (response.data.types.length > 1) {
       let type2 = document.createElement('div');
       type2.classList.add('type');
-      let pokemonType2 = response.data.types[1].type.name;
+      pokemonType2 = response.data.types[1].type.name;
       type2.id = pokemonType2;
       type2.append(pokemonType2);
       select.append(type2);
     }
+
+    // Function to get attack menu
+    if (inputName === 'attacker') {
+      getAttack(pokemonType1, pokemonType2);
+    }
   } catch (error) {
+    console.log(error);
     if (inputName === 'defender') {
       errorText = document.querySelector('#defendErrorText');
       errorText.textContent = 'Please pick a valid defending Pokemon from the drop-down';
-    } else {
+    } if (inputName === 'attacker') {
       errorText = document.querySelector('#attackErrorText');
       errorText.textContent = 'Please pick a valid attacking Pokemon from the drop-down';
     }
   } finally {
     console.log('Pokemon generated');
+  }
+}
+
+async function getAttack(type1, type2) {
+  try {
+    const numTypes = 18;
+    let pokemonTypes = await axios.get('https://pokeapi.co/api/v2/type/');
+    let types = [];
+    let attackHeader = document.querySelectorAll('.attackHeader');
+    for (let i = 0; i < attackHeader.length; i++) {
+      attackHeader[i].classList.remove('hidden');
+    }
+    for (i = 0; i < numTypes; i++) {
+      let attackForm = document.querySelector('#attackTypes');
+      attackForm.classList.remove('hidden');
+      let select = document.querySelector('#attackSelect');
+      types[i] = pokemonTypes.data.results[i].name;
+      let option = document.createElement('option');
+      option.value = types[i];
+      option.textContent = capitalize(types[i]);
+      if (type1 === types[i]) {
+        option.classList.add('stab');
+      }
+      if (type2 === types[i]) {
+        option.classList.add('stab');
+      }
+      select.appendChild(option);
+    }
+  } catch (error) {
+    console.log(`Error: ${error}`);
+  } finally {
+    console.log('Attack menu created');
   }
 }
 
