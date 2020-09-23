@@ -150,9 +150,9 @@ async function getPokemonData(input, inputName, select, pokemon) {
     name.classList.add('pokemonText');
     let pokemonName = capitalize(pokemon);
     if (inputName === 'defender') {
-      name.textContent = "Defender: ";
+      name.innerHTML = "Defender: ";
     } else {
-      name.textContent = "Attacker: ";
+      name.innerHTML = "Attacker: ";
     }
     name.textContent += pokemonName;
     select.append(name);
