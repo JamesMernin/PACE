@@ -242,8 +242,9 @@ function getSelection() {
   let attackTypes = document.querySelector('#attackTypes');
   if (attackSelect.options.selectedIndex === 0) {
     attackTypes.classList.remove('selected');
+    document.querySelector('#effective').classList.add('hidden');
+    document.querySelector('#stab').classList.add('hidden');
   } else {
-    console.log(`Select: ${attackSelect.options.selectedIndex}`);
     attackTypes.classList.add('selected');
     if (document.querySelector('#defender').classList.contains('selected') && document.querySelector('#attacker').classList.contains('selected') && document.querySelector('#attackTypes').classList.contains('selected')) {
       getEffectiveness(attackSelect.options[attackSelect.selectedIndex], document.querySelectorAll('#defender .type')[0].textContent, document.querySelectorAll('#defender .type')[1].textContent);
@@ -256,11 +257,8 @@ async function getEffectiveness(attackType, defendType1, defendType2) {
     let multiplier = 1;
     let attack = await axios.get(`https://pokeapi.co/api/v2/type/${attackType.value}/`);
     let superEffectiveArr = attack.data.damage_relations.double_damage_to;
-    console.log(`SuperEffective: ${superEffectiveArr}`);
     let notVeryEffectiveArr = attack.data.damage_relations.half_damage_to;
-    console.log(`NotVeryEffective: ${notVeryEffectiveArr}`);
     let noEffectArr = attack.data.damage_relations.no_damage_to;
-    console.log(`NoEffect: ${noEffectArr}`);
     for (let i = 0; i < superEffectiveArr.length; i++) {
       if (defendType1 === superEffectiveArr[i].name || defendType2 === superEffectiveArr[i].name) {
         multiplier *= 2;
@@ -300,7 +298,6 @@ function effectiveCalc(attackType, multiplier) {
   effective.innerHTML += `<span> (${multiplier}x damage)`;
   if (attackType.classList.contains('stab')) {
     stabMultiplier = 1.5;
-    console.log(stabMultiplier);
   } else {
     stabMultiplier = 1;
   }
