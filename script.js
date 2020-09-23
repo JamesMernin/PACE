@@ -140,6 +140,7 @@ async function getPokemonData(input, inputName, select, pokemon) {
       select.append(image);
     } else {
       let image = document.createElement('p');
+      image.classList.add('noimage');
       image.textContent = '[No image]';
       select.append(image);
     }
