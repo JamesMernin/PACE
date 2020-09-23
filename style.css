@@ -4,15 +4,11 @@
 }
 
 html, body {
-  background: url(/home/jamespmernin/Documents/general_assembly/sei/phoenix/unit_1/PACE/Images/background.png) no-repeat center center fixed;
+  background: url(/home/jamespmernin/Documents/general_assembly/sei/phoenix/unit_1/PACE/Images/background.jpeg) no-repeat center center fixed;
   -webkit-background-size: 100%;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
-
-span {
-  background: #000000;
 }
 
 h1 {
@@ -22,13 +18,13 @@ h1 {
 
 h2 {
   color: #FFFFFF;
-  font-size: 18px;
+  font-size: 24px;
   margin: 10px auto;
 }
 
 h3 {
   color: #FFFFFF;
-  font-size: 14px;
+  font-size: 21px;
   margin: 10px auto;
 }
 
@@ -38,8 +34,9 @@ h4 {
 }
 
 img {
-  width: 100%;
+  width: 125%;
   height: auto;
+  margin: 10px;
   vertical-align: middle;
 }
 
@@ -50,8 +47,8 @@ img {
 }
 
 .pokemonText {
-  background-color: #000000;
   color: #FFFFFF;
+  font-size: 150%;
   margin: 10px auto;
 }
 
@@ -65,7 +62,6 @@ img {
 }
 
 .noimage {
-  background-color: #000000;
   color: #FFFFFF;
 }
 
@@ -73,10 +69,11 @@ img {
 border-radius: 5px;
 color: #FFFFFF;
 display: inline-block;
+font-size: 150%;
 margin: 0 5px 10px 5px;
 text-align: center;
 text-transform: uppercase;
-width: 100px;
+width: 150px;
 vertical-align: middle;
 }
 
@@ -86,6 +83,14 @@ vertical-align: middle;
 
 .select {
   font-style: italic;
+}
+
+#defendErrorText {
+  color: #FFFFFF;
+}
+
+#attackErrorText {
+  color: #FFFFFF;
 }
 
 #clear {

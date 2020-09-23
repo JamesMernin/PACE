@@ -287,15 +287,15 @@ function effectiveCalc(attackType, multiplier) {
   let stabMultiplier = 1;
   effective.classList.remove('hidden');
   if (multiplier === 0) {
-    effective.innerHTML = "<span>This move type has no effect.";
+    effective.innerHTML = "This move type has no effect.";
   } else if (multiplier < 1) {
-    effective.innerHTML = "<span>This move type is not very effective...";
+    effective.innerHTML = "This move type is not very effective...";
   } else if (multiplier === 1) {
-    effective.innerHTML = "<span>This move type is regularly effective.";
+    effective.innerHTML = "This move type is regularly effective.";
   } else {
-    effective.innerHTML = "<span>This move type is super effective!";
+    effective.innerHTML = "This move type is super effective!";
   }
-  effective.innerHTML += `<span> (${multiplier}x damage)`;
+  effective.innerHTML += ` (${multiplier}x damage)`;
   if (attackType.classList.contains('stab')) {
     stabMultiplier = 1.5;
   } else {
@@ -304,7 +304,7 @@ function effectiveCalc(attackType, multiplier) {
   let stabText = document.querySelector('#stab');
   if (stabMultiplier === 1.5 && multiplier != 0) {
     stabText.classList.remove('hidden');
-    stabText.innerHTML = `<span>With STAB, this move type does ${multiplier * stabMultiplier}x damage!</span>`;
+    stabText.textContent = `With STAB, this move type does ${multiplier * stabMultiplier}x damage!`;
   } else {
     stabText.classList.add('hidden');
   }
