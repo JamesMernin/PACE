@@ -12,24 +12,24 @@ html, body {
 }
 
 h1 {
-  color: #FFFFFF;
+  color: #2C75FF;
   margin: 10px auto;
 }
 
 h2 {
-  color: #FFFFFF;
+  color: #2C75FF;
   font-size: 20px;
   margin: 10px auto;
 }
 
 h3 {
-  color: #FFFFFF;
+  color: #2C75FF;
   font-size: 18px;
   margin: 10px auto;
 }
 
 h4 {
-  color: #FFFFFF;
+  color: #2C75FF;
   margin: 10px auto;
 }
 
@@ -58,7 +58,7 @@ select {
 }
 
 .pokemonText {
-  color: #FFFFFF;
+  color: #2C75FF;
   font-size: 135%;
   margin: 10px auto;
 }
@@ -75,7 +75,7 @@ select {
 }
 
 .noimage {
-  color: #FFFFFF;
+  color: #2C75FF;
 }
 
 .type {
@@ -99,11 +99,11 @@ vertical-align: middle;
 }
 
 #defendErrorText {
-  color: #FFFFFF;
+  color: #2C75FF;
 }
 
 #attackErrorText {
-  color: #FFFFFF;
+  color: #2C75FF;
 }
 
 #blank {
@@ -231,7 +231,7 @@ input[type=submit] {
 .autocomplete-active {
   /*when navigating through the items using the arrow keys:*/
   background-color: #FF0000 !important;
-  color: #ffffff;
+  color:#FFFFFF;
 }
 
 @media screen and (min-width: 715px) and (max-width: 980px) {
