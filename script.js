@@ -107,9 +107,9 @@ async function autocomplete(inp) {
       closeAllLists(e.target);
     });
   } catch (error) {
-    console.log(`Error: ${error}`);
+    // console.log(`Autocomplete Error: ${error}`);
   } finally {
-    console.log(`List generated`);
+    // console.log(`List generated`);
   }
 }
 
@@ -192,7 +192,7 @@ async function getPokemonData(input, inputName, select, pokemon) {
       getAttack(pokemonType1, pokemonType2);
     }
   } catch (error) {
-    console.log(error);
+    // console.log(`Get Pokemon Error: ${error}`);
     if (inputName === 'defender') {
       errorText = document.querySelector('#defendErrorText');
       errorText.textContent = 'Please pick a valid defending Pokemon from the drop-down';
@@ -201,7 +201,7 @@ async function getPokemonData(input, inputName, select, pokemon) {
       errorText.textContent = 'Please pick a valid attacking Pokemon from the drop-down';
     }
   } finally {
-    console.log('Pokemon generated');
+    // console.log('Pokemon generated');
   }
 }
 
@@ -231,9 +231,9 @@ async function getAttack(type1, type2) {
       select.appendChild(option);
     }
   } catch (error) {
-    console.log(`Error: ${error}`);
+    // console.log(`Get Attack Error: ${error}`);
   } finally {
-    console.log('Attack menu created');
+    // console.log('Attack menu created');
   }
 }
 
@@ -276,9 +276,9 @@ async function getEffectiveness(attackType, defendType1, defendType2) {
     }
     effectiveCalc(attackType, multiplier);
   } catch (error) {
-    console.log(`Error: ${error}`);
+    // console.log(`Get Effectiveness Error: ${error}`);
   } finally {
-    console.log('Effectiveness calculated');
+    // console.log('Effectiveness calculated');
   }
 }
 
