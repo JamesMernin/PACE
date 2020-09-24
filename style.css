@@ -42,6 +42,7 @@ img {
 button {
   width: 300px;
   font-size: 18px;
+  margin: 20px 0 0 0;
 }
 
 select {
@@ -103,10 +104,6 @@ vertical-align: middle;
 
 #attackErrorText {
   color: #FFFFFF;
-}
-
-#clear {
-margin: 20px 0 0 0;
 }
 
 #blank {
@@ -237,7 +234,7 @@ input[type=submit] {
   color: #ffffff;
 }
 
-@media screen and (max-width: 980px) {
+@media screen and (min-width: 715px) and (max-width: 980px) {
   h1 {
     font-size: 24px;
   }
@@ -248,5 +245,38 @@ input[type=submit] {
     display: inline-block;
     margin-right: 25px;
     text-align: center;
+  }
+}
+
+@media screen and (min-width: 311px) and (max-width: 714px) {
+  h1 {
+    font-size: 16px;
+  }
+  
+  h2 {
+    font-size: 14px;
+  }
+  
+  h3 {
+    font-size: 12px;
+  }
+  
+  h4 {
+    font-size: 10px;
+  }
+  img {
+    width: 50%;
+  }
+  .pokemon {
+    display: inline-block;
+    margin-right: 5px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 310px) {
+  button {
+    width: 200px;
+    font-size: 75%;
   }
 }
