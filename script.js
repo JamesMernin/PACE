@@ -3,7 +3,7 @@ function capitalize(name) {
   return name.charAt(0).toUpperCase() + name.slice(1);
 }
 
-// Source for autocomplete: https://www.w3schools.com/howto/howto_js_autocomplete.asp
+// Source for autocomplete function: https://www.w3schools.com/howto/howto_js_autocomplete.asp
 async function autocomplete(inp) {
   const pokemonCount = 1050;
   let arr = [];
