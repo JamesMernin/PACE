@@ -236,3 +236,17 @@ input[type=submit] {
   background-color: #FF0000 !important;
   color: #ffffff;
 }
+
+@media screen and (max-width: 980px) {
+  h1 {
+    font-size: 24px;
+  }
+  img {
+    width: 80%;
+  }
+  .pokemon {
+    display: inline-block;
+    margin-right: 25px;
+    text-align: center;
+  }
+}
