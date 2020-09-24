@@ -18,13 +18,13 @@ h1 {
 
 h2 {
   color: #FFFFFF;
-  font-size: 24px;
+  font-size: 20px;
   margin: 10px auto;
 }
 
 h3 {
   color: #FFFFFF;
-  font-size: 21px;
+  font-size: 18px;
   margin: 10px auto;
 }
 
@@ -34,10 +34,20 @@ h4 {
 }
 
 img {
-  width: 125%;
-  height: auto;
-  margin: 10px;
+  width: 135%;
+  margin: 0 0 10px 0;
   vertical-align: middle;
+}
+
+button {
+  width: 300px;
+  font-size: 18px;
+}
+
+select {
+  width: 120px;
+  height: auto;
+  font-size: 18px;
 }
 
 .pokemon {
@@ -48,7 +58,7 @@ img {
 
 .pokemonText {
   color: #FFFFFF;
-  font-size: 150%;
+  font-size: 135%;
   margin: 10px auto;
 }
 
@@ -59,6 +69,8 @@ img {
 
 .hidden {
   display: none;
+  margin: 0;
+  padding: 0;
 }
 
 .noimage {
@@ -69,7 +81,7 @@ img {
 border-radius: 5px;
 color: #FFFFFF;
 display: inline-block;
-font-size: 150%;
+font-size: 135%;
 margin: 0 5px 10px 5px;
 text-align: center;
 text-transform: uppercase;
@@ -95,10 +107,6 @@ vertical-align: middle;
 
 #clear {
 margin: 20px 0 0 0;
-}
-
-#space {
-  margin-bottom: 20px;
 }
 
 #blank {
@@ -178,7 +186,8 @@ margin: 20px 0 0 0;
 }
 
 #attackTypes {
-  size: 200%;
+  width: 200px;
+  height: auto;
 }
 
 .autocomplete {
