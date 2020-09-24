@@ -83,14 +83,53 @@ A way to include additional options that would effect the damage multiplier. Som
 ---
 
 ## Timeframes:
-| Component | Priority | Estimated Time | Time Invested | Actual Time |
-| --- | :---: |  :---: | :---: | :---: |
-| HTML Structure | M | 4hrs |  |  |
-| CSS Styling | M | 6hrs |  |  |
-| Choose Attacking and Defending Pokemon | H | 6hrs |  |  |
-| Choose attacking move type | H | 2hrs |  |  |
-| Process and display attack effectiveness | H | 4hrs |  |  |
-| Testing and bug fixing | H | 6hrs |  |  |
-| Setting up custom domain | H | 2hrs |  |  |
-| Add additional effects from post MVP (optional) | L | 10hrs |  |  |
-| Total | H | 40hrs |  |  |
+| Component | Priority | Estimated Time | Actual Time |
+| --- | :---: |  :---: | :---: |
+| HTML Structure | M | 4hrs | 3hrs |
+| CSS Styling | M | 6hrs | 3hrs |
+| Choose Attacking and Defending Pokemon | H | 6hrs | 6hrs |
+| Choose attacking move type | H | 2hrs | 2hrs |
+| Process and display attack effectiveness | H | 4hrs | 2hrs |
+| Testing and bug fixing | H | 6hrs | 6hrs |
+| Setting up custom domain | H | 2hrs | 2hrs |
+| Add additional effects from post MVP (optional) | L | 10hrs | 0hrs |
+| Total | H | 40hrs | 24hrs |
+
+---
+
+## Code Snippet:
+This code was used to edit the multiplier based on API calls to effectiveness arrays
+```javascript
+let multiplier = 1;
+    let attack = await axios.get(`https://pokeapi.co/api/v2/type/${attackType.value}/`);
+    let superEffectiveArr = attack.data.damage_relations.double_damage_to;
+    let notVeryEffectiveArr = attack.data.damage_relations.half_damage_to;
+    let noEffectArr = attack.data.damage_relations.no_damage_to;
+    for (let i = 0; i < superEffectiveArr.length; i++) {
+      if (defendType1 === superEffectiveArr[i].name || defendType2 === superEffectiveArr[i].name) {
+        multiplier *= 2;
+      }
+    }
+    for (i = 0; i < notVeryEffectiveArr.length; i++) {
+      if (defendType1 === notVeryEffectiveArr[i].name || defendType2 === notVeryEffectiveArr[i].name) {
+        multiplier *= 0.5;
+      }
+    }
+    for (i = 0; i < noEffectArr.length; i++) {
+      if (defendType1 === noEffectArr[i].name || defendType2 === noEffectArr[i].name) {
+        multiplier *= 0;
+      }
+    }
+```
+
+---
+
+## Changelog
+v. 1.0
+  * Created the HTML structure and background
+  * Made autocomplete menus to select attacking and defending Pokemon
+  * Generated front-facing sprites because not every Pokemon had a back-facing sprite
+  * Created a menu to select one of the eighteen attack types
+  * Emboldened the types of attacks that would get Same Type Attack Boost (STAB) from the attacking Pokemon
+  * Included a message showing how effective the attack type would be, including bonus text if the attack got STAB and the effectiveness multiplier was not zero
+  * Included a button to refresh the page in order to start again
