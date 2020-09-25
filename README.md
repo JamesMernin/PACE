@@ -138,3 +138,4 @@ v. 1.0
 
 v. 1.1
   * Realized that it was possible to search for Pokemon by ID, so the code has been modified to handle that scenario so that it still shows the Pokemon name
+  * Added a fall-back font of Arial
