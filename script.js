@@ -120,6 +120,9 @@ function getName(input, inputName, select) {
 
 async function getPokemonData(input, inputName, select, pokemon) {
   try {
+    if (typeof pokemon == 'number') {
+      pokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).data.forms.name;
+    }
     pokemon = pokemon.toLowerCase();
     let response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
     let source;
