@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: "pokemon-font", monospace;
+  font-family: "pokemon-font", "arial", monospace;
 }
 
 html, body {
