@@ -148,7 +148,7 @@ async function getPokemonData(input, inputName, select, pokemon) {
     // Display the name
     let name = document.createElement('p');
     name.classList.add('pokemonText');
-    let pokemonName = capitalize(axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).data.forms.name);
+    let pokemonName = capitalize(response.data.forms[0].name);
     if (inputName === 'defender') {
       name.innerHTML = "Defender: ";
     } else {
@@ -192,7 +192,7 @@ async function getPokemonData(input, inputName, select, pokemon) {
       getAttack(pokemonType1, pokemonType2);
     }
   } catch (error) {
-    // console.log(`Get Pokemon Error: ${error}`);
+    console.log(`Get Pokemon Error: ${error}`);
     if (inputName === 'defender') {
       errorText = document.querySelector('#defendErrorText');
       errorText.textContent = 'Please pick a valid defending Pokemon from the drop-down';
