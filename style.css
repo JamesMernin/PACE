@@ -4,7 +4,7 @@
 }
 
 html, body {
-  background: url(/home/jamespmernin/Documents/general_assembly/sei/phoenix/unit_1/PACE/Images/background.jpg) no-repeat center center fixed;
+  background: url(https://github.com/jamespmernin/PACE/blob/master/Images/background.jpg) no-repeat center center fixed;
   -webkit-background-size: 100%;
   -moz-background-size: cover;
   -o-background-size: cover;
