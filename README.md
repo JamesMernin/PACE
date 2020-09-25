@@ -135,3 +135,6 @@ v. 1.0
   * Emboldened the types of attacks that would get Same Type Attack Boost (STAB) from the attacking Pokemon
   * Included a message showing how effective the attack type would be, including bonus text if the attack got STAB and the effectiveness multiplier was not zero
   * Included a button to refresh the page in order to start again
+
+v. 1.1
+  * Realized that it was possible to search for Pokemon by ID, so the code has been modified to handle that scenario so that it still shows the Pokemon name
