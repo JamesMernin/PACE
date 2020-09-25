@@ -148,7 +148,7 @@ async function getPokemonData(input, inputName, select, pokemon) {
     // Display the name
     let name = document.createElement('p');
     name.classList.add('pokemonText');
-    let pokemonName = capitalize(pokemon);
+    let pokemonName = capitalize(axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).data.forms.name);
     if (inputName === 'defender') {
       name.innerHTML = "Defender: ";
     } else {
