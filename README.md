@@ -1,4 +1,4 @@
-# ![alt text](https://github.com/JamesMernin/PACE/blob/master/Images/pokeball.png "Pokeball")Pokemon Attack: Calculate Effectiveness "PACE" ![alt text](https://github.com/JamesMernin/PACE/blob/master/Images/pokeball.png "Pokeball")
+# ![alt text](https://github.com/JamesMernin/PACE/blob/master/pokeball.png "Pokeball")Pokemon Attack: Calculate Effectiveness "PACE" ![alt text](https://github.com/JamesMernin/PACE/blob/master/pokeball.png "Pokeball")
 
 ---
 
