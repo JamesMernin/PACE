@@ -148,7 +148,7 @@ async function getPokemonData(input, inputName, select, pokemon) {
     // Display the name
     let name = document.createElement('p');
     name.classList.add('pokemonText');
-    let pokemonName = capitalize(response.data.forms[0].name);
+    let pokemonName = capitalize(response.data.species.name);
     if (inputName === 'defender') {
       name.innerHTML = "Defender: ";
     } else {
