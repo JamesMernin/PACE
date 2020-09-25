@@ -12,6 +12,8 @@ html, body {
 }
 
 h1 {
+  display: flex;
+  justify-content: center;
   color: #2C75FF;
   margin: 10px auto;
 }
@@ -29,6 +31,8 @@ h3 {
 }
 
 h4 {
+  display: flex;
+  justify-content: center;
   color: #2C75FF;
   margin: 10px auto;
 }
